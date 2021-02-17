@@ -1,0 +1,21 @@
+.content {
+  grid-area: c;
+  background-color: lightcyan;
+}
+
+.item {
+  color: gold;
+}
+
+.wall {
+  color:maroon;
+  padding: 10px;
+}
+
+.new {
+  color: black;
+}
+
+.posts {
+  margin-top: 10px;
+}

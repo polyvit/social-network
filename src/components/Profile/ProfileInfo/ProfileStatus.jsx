@@ -11,10 +11,10 @@ class ProfileStatus extends React.Component {
         return (
             <div>
                 <div>
-                    <span>{props.status}</span>
+                    {!this.state.editMode && <span>{this.props.status}</span>}
                 </div>
                 <div>
-                    <input value={props.status}/>
+                    {this.state.editMode && <input value={this.props.status}/>}
                 </div>
             </div>
         )

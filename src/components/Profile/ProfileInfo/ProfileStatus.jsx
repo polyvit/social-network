@@ -13,6 +13,12 @@ class ProfileStatus extends React.Component {
         })
     }
 
+    deactivateEditMode() {
+        this.setState({
+            editMode: false
+        })
+    }
+
     render() {
         return (
             <div>
@@ -25,7 +31,7 @@ class ProfileStatus extends React.Component {
                 </div>
                 <div>
                     {this.state.editMode &&
-                        <input value={this.props.status}/>
+                        <input onBlur={this.deactivateEditMode.bind(this)} value={this.props.status}/>
                     }
                 </div>
             </div>

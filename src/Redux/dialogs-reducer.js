@@ -13,7 +13,8 @@ let initialState = {
         {id: 2, message: 'How are you?'},
         {id: 3, message: 'Yeap'}
     ],
-    newMessageBody: ""
+    newMessageBody: "",
+    isAuth: false
 }
 
 const dialogsReducer = (state=initialState, action) => {

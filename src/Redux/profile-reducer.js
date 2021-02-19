@@ -11,7 +11,8 @@ let initialState = {
         {id: 3, message: 'Great to see you', likesCount: 8}
     ],
     newPostText: 'Hi!',
-    profile: null
+    profile: null,
+    isAuth: false
 };
 
 const profileReducer = (state=initialState, action) => {

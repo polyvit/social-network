@@ -4,7 +4,7 @@ import s from "./ProfileInfo.module.css";
 
 class ProfileStatus extends React.Component {
     state = {
-        editMode: false
+        editMode: false,
     }
 
     activateEditMode = () => {
@@ -16,7 +16,8 @@ class ProfileStatus extends React.Component {
     deactivateEditMode = () => {
         this.setState({
             editMode: false
-        })
+        });
+        this.props.updateStatus(status)
     }
 
     render() {

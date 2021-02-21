@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./FormsControls.module.css"
 
-const Textarea = ({input, meta, ...props}) => {
+export const Textarea = ({input, meta, ...props}) => {
     return (
-        <div className={styles.formControl}>
-            <textarea {...input} {...props} />
+        <div className={styles.formControl + " " + styles.error}>
+            <div>
+                <textarea {...input} {...props} />
+            </div>
+            <span>{"some error"}</span>
         </div>
     )
 }
 
-export default Textarea

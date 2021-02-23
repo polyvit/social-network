@@ -15,7 +15,7 @@ export const getCurrentPage = (state) => {
 }
 
 export const getIsFetching = (state) => {
-    return state.usersPage.currentPage
+    return state.usersPage.isFetching
 }
 
 export const getFollowingInProgress = (state) => {

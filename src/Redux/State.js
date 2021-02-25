@@ -28,7 +28,7 @@ let store = {
         }
     },
     _callSubscriber() {
-        console.log ('State has been changed');
+
     },
     getState() {
         return this._state;

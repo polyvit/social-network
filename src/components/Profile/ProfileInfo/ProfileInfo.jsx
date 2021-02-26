@@ -3,6 +3,7 @@ import React, {useState} from "react";
 import Preloader from "../../Common/preloader/preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
 import userPhoto from "../../../Assets/images/icon.png";
+import ProfileDataReduxForm from "./ProfileDataForm";
 
 
 const ProfileInfo = (props) => {
@@ -32,7 +33,8 @@ const ProfileInfo = (props) => {
                     {props.isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
                 </div>
                 <div>
-                    {editMode ? <ProfileDataForm {...props} />
+                    {editMode
+                        ? <ProfileDataReduxForm {...props} goToEditMode={() => {setEditMode(false)}} />
                     : <ProfileData {...props} goToEditMode={() => {setEditMode(true)}}/>}
                 </div>
                 <div>
@@ -71,14 +73,6 @@ const ProfileData = (props) => {
                 return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />
             })}
             </div>
-        </div>
-    )
-}
-
-const ProfileDataForm = (props) => {
-    return (
-        <div>
-            Form
         </div>
     )
 }

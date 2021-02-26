@@ -20,6 +20,11 @@ const ProfileInfo = (props) => {
         }
     }
 
+    const onSubmit = (formData) => {
+        props.saveProfile(formData)
+    }
+
+
     return (
         <div>
             <div className={s.photo}>
@@ -34,7 +39,7 @@ const ProfileInfo = (props) => {
                 </div>
                 <div>
                     {editMode
-                        ? <ProfileDataReduxForm {...props} goToEditMode={() => {setEditMode(false)}} />
+                        ? <ProfileDataReduxForm onSubmit={onSubmit} {...props} goToEditMode={() => {setEditMode(false)}} />
                     : <ProfileData {...props} goToEditMode={() => {setEditMode(true)}}/>}
                 </div>
                 <div>
@@ -56,7 +61,7 @@ const ProfileData = (props) => {
                 {props.isOwner && <button onClick={props.goToEditMode}>Edit</button>}
             </div>
             <div>
-                <b>Full name:</b> {props.profile.fullname}
+                <b>Full name:</b> {props.profile.fullName}
             </div>
             {props.profile.lookingForAJob &&
             <div>

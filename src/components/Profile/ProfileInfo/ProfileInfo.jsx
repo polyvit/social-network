@@ -15,8 +15,15 @@ const ProfileInfo = (props) => {
                 <img src='https://sun9-23.userapi.com/c858324/v858324189/22e4b1/tGh_dtjLj04.jpg'></img>
             </div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large || userPhoto} />
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+                <div>
+                    <img src={props.profile.photos.large || userPhoto} />
+                </div>
+                <div>
+                    {props.isOwner && <input type={"file"}/>}
+                </div>
+                <div>
+                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+                </div>
             </div>
         </div>
     )

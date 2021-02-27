@@ -5,23 +5,22 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
 import userPhoto from "../../../Assets/images/icon.png";
 import ProfileDataReduxForm from "./ProfileDataForm";
 
-
-const ProfileInfo = (props) => {
+const ProfileInfo = ({isOwner, profile, savePhoto, saveProfile, status, updateStatus}) => {
 
     let [editMode, setEditMode] = useState(false)
 
-    if(!props.profile) {
+    if(!profile) {
         return <Preloader />
     }
 
     const onMainPhotoSelected = (e) => {
         if (e.target.files.length) {
-            props.savePhoto(e.target.files[0])
+            savePhoto(e.target.files[0])
         }
     }
 
     const onSubmit = (formData) => {
-        props.saveProfile(formData)
+        saveProfile(formData)
     }
 
 
@@ -32,18 +31,18 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 <div>
-                    <img src={props.profile.photos.large || userPhoto} />
+                    <img src={profile.photos.large || userPhoto} />
                 </div>
                 <div>
-                    {props.isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
+                    {isOwner && <input type={"file"} onChange={onMainPhotoSelected} />}
                 </div>
                 <div>
                     {editMode
-                        ? <ProfileDataReduxForm onSubmit={onSubmit} {...props} goToEditMode={() => {setEditMode(false)}} />
-                    : <ProfileData {...props} goToEditMode={() => {setEditMode(true)}}/>}
+                        ? <ProfileDataReduxForm onSubmit={onSubmit} profile={profile} goToEditMode={() => {setEditMode(false)}} />
+                    : <ProfileData profile={profile} isOwner={isOwner} goToEditMode={() => {setEditMode(true)}}/>}
                 </div>
                 <div>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
                 </div>
             </div>
         </div>
@@ -54,28 +53,28 @@ const Contact = ({contactTitle, contactValue}) => {
     return <div className={s.contact}>{contactTitle}:{contactValue}</div>
 }
 
-const ProfileData = (props) => {
+const ProfileData = ({isOwner, goToEditMode, profile}) => {
     return (
         <div>
             <div>
-                {props.isOwner && <button onClick={props.goToEditMode}>Edit</button>}
+                {isOwner && <button onClick={goToEditMode}>Edit</button>}
             </div>
             <div>
-                <b>Full name:</b> {props.profile.fullName}
+                <b>Full name:</b> {profile.fullName}
             </div>
-            {props.profile.lookingForAJob &&
+            {profile.lookingForAJob &&
             <div>
-                <b>Looking for a job description:</b> {props.profile.lookingForAJobDescription}
+                <b>Looking for a job description:</b> {profile.lookingForAJobDescription}
             </div>}
             <div>
-                <b>Looking for a job:</b> {props.profile.lookingForAJob ? "yes" : "no"}
+                <b>Looking for a job:</b> {profile.lookingForAJob ? "yes" : "no"}
             </div>
             <div>
-                <b>About me:</b> {props.profile.aboutMe}
+                <b>About me:</b> {profile.aboutMe}
             </div>
             <div>
-                <b>Contacts:</b> {Object.keys(props.profile.contacts).map(key => {
-                return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />
+                <b>Contacts:</b> {Object.keys(profile.contacts).map(key => {
+                return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
             })}
             </div>
         </div>

@@ -2,11 +2,11 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {createField, Input, Textarea} from "../../Common/FormsControls/FormsControls";
 
-const ProfileDataForm = (props) => {
+const ProfileDataForm = ({handleSubmit, goToEditMode, profile}) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
-                <button onClick={props.goToEditMode}>Save</button>
+                <button onClick={goToEditMode}>Save</button>
             </div>
             <div>
                 Full name: {createField("Full name", "fullName", [], Input)}
@@ -26,8 +26,8 @@ const ProfileDataForm = (props) => {
                 [], Textarea)}
             </div>
             {/*<div>*/}
-            {/*    <b>Contacts:</b> {Object.keys(props.profile.contacts).map(key => {*/}
-            {/*    return <Contact key={key} contactTitle={key} contactValue={props.profile.contacts[key]} />*/}
+            {/*    <b>Contacts:</b> {Object.keys(profile.contacts).map(key => {*/}
+            {/*    return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />*/}
             {/*})}*/}
             {/*</div>*/}
         </form>

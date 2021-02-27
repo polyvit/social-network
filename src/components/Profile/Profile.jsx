@@ -2,13 +2,13 @@ import React from 'react';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-const Profile = (props) => {
+const Profile = ({isOwner, profile, savePhoto, saveProfile, status, updateStatus, store}) => {
     return (
         <div>
-        <ProfileInfo isOwner={props.isOwner} profile={props.profile}
-                     savePhoto={props.savePhoto} saveProfile={props.saveProfile}
-                     status={props.status} updateStatus={props.updateStatus} />
-        <MyPostsContainer store={props.store}/>
+        <ProfileInfo isOwner={isOwner} profile={profile}
+                     savePhoto={savePhoto} saveProfile={saveProfile}
+                     status={status} updateStatus={updateStatus} />
+        <MyPostsContainer store={store}/>
   </div>
     )
 }
